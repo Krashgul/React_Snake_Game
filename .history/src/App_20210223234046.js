@@ -9,22 +9,15 @@ const getRandomCoordinates = () => {
   let y =  Math.floor((Math.random()*(max-min+1)+min)/2)*2;
   return [x,y]
 }
-
 class App extends Component  {
 
-  state = {
-    food: [6, 8],
-    snakeDots: [
-      [0, 0],
-      [2, 0]
-    ]
-  }
+
 
 
   render() {
     return (
       <div className="game-area">
-        <Snake snakeDots={this.state.snakeDots}/>
+        <Snake snakeDots={this.state.snakeDots} />
         <Food dot={this.state.food}/>
       </div>
     );

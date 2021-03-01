@@ -12,15 +12,15 @@ const getRandomCoordinates = () => {
 
 const initialState = {
   food: getRandomCoordinates(),
-  speed: 50,
+  speed: 200,
   direction: 'RIGHT',
   snakeDots: [
     [0,0],
     [2,0]
   ]
-}
 
-class App extends Component {
+
+class App extends Component  {
 
   state = initialState;
 
@@ -68,7 +68,7 @@ class App extends Component {
         head = [head[0], head[1] + 2];
         break;
       case 'UP':
-        head = [head[0], head[1] - 2];
+        head = [head[0], head[1] -2];
         break;
     }
     dots.push(head);
@@ -76,6 +76,7 @@ class App extends Component {
     this.setState({
       snakeDots: dots
     })
+
   }
 
   checkIfOutOfBorders() {

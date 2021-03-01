@@ -12,15 +12,15 @@ const getRandomCoordinates = () => {
 
 const initialState = {
   food: getRandomCoordinates(),
-  speed: 50,
-  direction: 'RIGHT',
+  speed: 200,
+  directtion: 'RIGHT',
   snakeDots: [
-    [0,0],
-    [2,0]
+    [0, 0],
+    [2, 0]
   ]
 }
 
-class App extends Component {
+class App extends Component  {
 
   state = initialState;
 
@@ -30,25 +30,24 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    this.checkIfOutOfBorders();
+    this.checkIfOutOfBoards();
     this.checkIfCollapsed();
-    this.checkIfEat();
   }
 
   onKeyDown = (e) => {
     e = e || window.event;
     switch (e.keyCode) {
       case 38:
-        this.setState({direction: 'UP'});
+        this.setState({ direction: 'UP' });
         break;
       case 40:
-        this.setState({direction: 'DOWN'});
+        this.setState({ direction: 'DOWN' });
         break;
       case 37:
-        this.setState({direction: 'LEFT'});
+        this.setState({ direction: 'LEFT' });
         break;
       case 39:
-        this.setState({direction: 'RIGHT'});
+        this.setState({ direction: 'RIGHT' });
         break;
     }
   }
@@ -68,7 +67,7 @@ class App extends Component {
         head = [head[0], head[1] + 2];
         break;
       case 'UP':
-        head = [head[0], head[1] - 2];
+        head = [head[0], head[1] -2];
         break;
     }
     dots.push(head);
@@ -76,53 +75,26 @@ class App extends Component {
     this.setState({
       snakeDots: dots
     })
+
   }
 
-  checkIfOutOfBorders() {
+  checkIfOutOfBoards() {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
-    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
+    if (head[0] >= 100 || head[1] >= 100 || head < [0] || head[1] < 0) {
       this.onGameOver();
     }
   }
 
   checkIfCollapsed() {
     let snake = [...this.state.snakeDots];
-    let head = snake[snake.length - 1];
+    let head = snake[snake.length - 1]
     snake.pop();
     snake.forEach(dot => {
       if (head[0] == dot[0] && head[1] == dot[1]) {
-        this.onGameOver();
+        this.onGameOver()
       }
     })
-  }
-
-  checkIfEat() {
-    let head = this.state.snakeDots[this.state.snakeDots.length - 1];
-    let food = this.state.food;
-    if (head[0] == food[0] && head[1] == food[1]) {
-      this.setState({
-        food: getRandomCoordinates()
-      })
-      this.enlargeSnake();
-      this.increaseSpeed();
-    }
-  }
-
-  enlargeSnake() {
-    let newSnake = [...this.state.snakeDots];
-    newSnake.unshift([])
-    this.setState({
-      snakeDots: newSnake
-    })
-  }
-
-  increaseSpeed() {
-    if (this.state.speed > 10) {
-      this.setState({
-        speed: this.state.speed - 10
-      })
-    }
-  }
+}
 
   onGameOver() {
     alert(`Game Over. Snake length is ${this.state.snakeDots.length}`);

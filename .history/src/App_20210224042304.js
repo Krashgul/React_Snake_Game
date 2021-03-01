@@ -12,15 +12,15 @@ const getRandomCoordinates = () => {
 
 const initialState = {
   food: getRandomCoordinates(),
-  speed: 50,
+  speed: 200,
   direction: 'RIGHT',
   snakeDots: [
     [0,0],
     [2,0]
   ]
-}
 
-class App extends Component {
+
+class App extends Component  {
 
   state = initialState;
 
@@ -52,6 +52,7 @@ class App extends Component {
         break;
     }
   }
+
 
   moveSnake = () => {
     let dots = [...this.state.snakeDots];

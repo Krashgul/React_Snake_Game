@@ -9,6 +9,7 @@
 
 .snake-dot {
   position: absolute;
+  box-sizing: border-box;
   width: 2%;
   height: 2%;
   background-color: rgb(104, 219, 68);

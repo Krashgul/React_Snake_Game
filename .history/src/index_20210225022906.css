@@ -9,8 +9,9 @@
 
 .snake-dot {
   position: absolute;
-  width: 2%;
-  height: 2%;
+  box-sizing: border-box;
+  width: 3%;
+  height: 3%;
   background-color: rgb(104, 219, 68);
   border: 2px solid rgb(73, 153, 48);
   z-index: 2;
@@ -18,8 +19,8 @@
 
 .snake-food {
   position: absolute;
-  width: 2%;
-  height: 2%;
+  width: 3%;
+  height: 3%;
   background: rgb(66, 60, 60);
   border: 1px solid #000;
   z-index: 1;
